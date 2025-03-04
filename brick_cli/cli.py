@@ -1,6 +1,10 @@
 import click
 
-from brick_cli.commands import create_repository, create_project
+from brick_cli.commands import (
+    create_repository,
+    create_project,
+    create_usecases,
+)
 
 
 @click.group()
@@ -10,6 +14,7 @@ def cli():
 
 cli.add_command(create_repository)
 cli.add_command(create_project)
+cli.add_command(create_usecases)
 # TODO: brick generate module user
 
 

@@ -1,0 +1,12 @@
+from src.application.usecases.abstract_usecase import UseCase
+from src.domain.repositories import {{ entity|title }}Repository
+from src.domain.entities import {{ entity|title }}
+
+
+class Get{{ entity|title }}UseCase(UseCase):
+    def __init__(self, {{ entity|lower }}_repository: {{ entity|title }}Repository):
+        self.{{ entity|lower }}_repository = {{ entity|lower }}_repository
+
+    def execute(self, {{ entity|lower }}_id: int) -> {{ entity|title }}:
+        return self.{{ entity|lower }}_repository.get_{{ entity|lower }}({{ entity|lower }}_id)
+

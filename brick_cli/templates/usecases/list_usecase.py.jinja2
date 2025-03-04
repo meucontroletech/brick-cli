@@ -1,0 +1,14 @@
+from typing import List
+
+from src.application.usecases.abstract_usecase import UseCase
+from src.domain.repositories import {{ entity|title }}Repository
+from src.domain.entities import {{ entity|title }}
+
+
+class List{{ entity|title }}UseCase(UseCase):
+    def __init__(self, {{ entity|lower }}_repository: {{ entity|title }}Repository):
+        self.{{ entity|lower }}_repository = {{ entity|lower }}_repository
+
+    def execute(self) -> List[{{ entity|title }}]:
+        return self.{{ entity|lower }}_repository.list_{{ plural|lower }}()
+

@@ -1,0 +1,11 @@
+from src.application.usecases.abstract_usecase import UseCase
+from src.domain.repositories import {{ entity|title }}Repository
+
+
+class Delete{{ entity|title }}UseCase(UseCase):
+    def __init__(self, {{ entity|lower }}_repository: {{ entity|title }}Repository):
+        self.{{ entity|lower }}_repository = {{ entity|lower }}_repository
+
+    def execute(self, {{ entity|lower }}_id: int):
+        self.repository.delete_{{ entity|lower }}({{ entity|lower }}_id)
+
