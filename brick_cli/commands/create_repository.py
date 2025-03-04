@@ -1,6 +1,6 @@
 import click
 
-from brick_cli.brick import Brick
+from brick_cli.services import create_repository as create_repository_service
 
 
 @click.command()
@@ -13,9 +13,14 @@ from brick_cli.brick import Brick
     type=click.Choice(['sqlalchemy']),
     required=False,
 )
+@click.option('--templates-path', default=None, required=False)
 def create_repository(
-    entity_name, plural_name, is_abstract, repository_backend
+    entity_name, plural_name, is_abstract, repository_backend, templates_path
 ):
-    Brick(db_backend=repository_backend).create_repository(
-        entity_name, plural_name, is_abstract
+    create_repository_service(
+        entity_name,
+        plural_name,
+        is_abstract,
+        repository_backend,
+        templates_path,
     )

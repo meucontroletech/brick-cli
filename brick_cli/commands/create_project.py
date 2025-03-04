@@ -1,6 +1,6 @@
 import click
 
-from brick_cli.brick import Brick
+from brick_cli.services import create_project as create_project_service
 
 
 @click.command()
@@ -9,4 +9,4 @@ from brick_cli.brick import Brick
 def create_project(
     project_name, base_dir
 ):
-    Brick().create_project(project_name, base_dir)
+    create_project_service(project_name, base_dir)
