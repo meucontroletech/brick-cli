@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "brick-cli"
+version = "0.1.0"
+description = "CLI for clean architecture scaffolding"
+authors = ["Francisco <vieirafrancisco.dev@gmail.com>"]
+license = "MIT License"
+readme = "README.md"
+packages = [{include = "brick_cli"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+jinja2 = "^3.1.5"
+click = "^8.1.8"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+brick = "brick_cli.cli:cli"

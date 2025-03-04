@@ -1,0 +1,36 @@
+from typing import List
+
+from sqlalchemy.orm import Session
+
+from src.domain.repositories import {{ entity|title }}Repository
+from src.domain.entities import {{ entity|title }}
+from src.infra.db.models import {{ entity|title }}Model
+
+
+class {{ entity|title }}Repository({{ entity|title }}Repository):
+    def __init__(self, db: Session):
+        self.db = db
+
+    def _model_to_entity(self, model_instance: {{ entity|title }}Model) -> {{ entity|title }}:
+        return {{ entity|title }}()  # TODO: implement this
+
+    def create_{{ entity|lower }}(self, {{ entity|lower }}: {{ entity|title }}) -> {{ entity|title }}:
+        new_{{ entity|lower }} = {{ entity|title }}(**{{ entity|lower }}.__dict__)
+        self.db.add(new_{{ entity|lower }})
+        self.db.commit()
+        return self._model_to_entity(new_{{ entity|lower }})
+
+    def list_{{ plural|lower }}(self) -> List[{{ entity|title }}]:
+        return [
+            self._model_to_entity({{ entity|lower }})
+            for {{ entity|lower }} in self.db.query({{ entity|title }}Model).all()
+        ]
+
+    def update_{{ entity|lower }}(self, {{ entity|lower }}: {{ entity|title }}) -> {{ entity|title }}:
+        self.db.query({{ entity|title }}Model).filter({{ entity|title }}Model == {{ entity|lower }}.id).update(**{{ entity|lower }}.__dict__)
+        self.db.commit()
+        return {{ entity|lower }}
+
+    def delete_{{ entity|lower }}(self, {{ entity|lower }}_id: int):
+        self.db.query({{ entity|title }}Model).filter({{ entity|title }}Model == {{ entity|lower }}_id).delete()
+

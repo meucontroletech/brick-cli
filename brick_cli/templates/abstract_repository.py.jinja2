@@ -1,0 +1,23 @@
+from abc import ABC, abstractmethod
+from typing import List
+
+from src.domain.entities import {{ entity|title }}
+
+
+class {{ entity|title }}Repository(ABC):
+    @abstractmethod
+    def create_{{ entity|lower }}(self, {{ entity|lower }}: {{ entity|title }}) -> {{ entity|title }}:
+        pass
+
+    @abstractmethod
+    def list_{{ plural|lower }}(self) -> List[{{ entity|title }}]:
+        pass
+
+    @abstractmethod
+    def update_{{ entity|lower }}(self) -> {{ entity|title }}:
+        pass
+
+    @abstractmethod
+    def delete_{{ entity|lower }}(self):
+        pass
+

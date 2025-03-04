@@ -1,0 +1,13 @@
+# Support Python 3.10+.
+target-version = "py310"
+# Set the maximum line length to 79.
+line-length = 79
+
+exclude = ["migrations"]
+
+[lint]
+# Add the `line-too-long` rule to the enforced rule set.
+extend-select = ["E501"]
+
+[format]
+quote-style = "single"
