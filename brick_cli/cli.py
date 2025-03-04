@@ -10,6 +10,7 @@ def cli():
 
 cli.add_command(create_repository)
 cli.add_command(create_project)
+# TODO: brick generate module user
 
 
 if __name__ == '__main__':
